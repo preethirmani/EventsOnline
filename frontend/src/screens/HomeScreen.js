@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import programs from '../programs'
+import Program from '../components /Program'
 
 
 const HomeScreen = () => {
@@ -12,7 +13,7 @@ const HomeScreen = () => {
       {
           programs.map(program => (
             <Col key={program._id} sm={12} md={6} lg={4} xl={3}>
-              Program prog = {program} />
+              <Program prog = {program} />
             </Col>
           ))
         }
