@@ -14,7 +14,13 @@ const programs = [
     seatsAvailable:'',
     category:'Health',
     requirements:'',
-    about:'',
+    about:`Movement is the key to maintaining mental and physical health.
+
+This series does seasonal training to help you develop a wide range of skills which will enhance both your health and your practice. We practices basic Tai Chi / Qigong skills as posting, walking, breathing, stretching, energy work, bone tapping and hand movements.
+
+Even outwardly simple movement when practiced correctly promote organ health, lower body strength and mental focus.
+
+Enjoy learning at home through our online lessons`,
     duration: '30 minutes'
   },
   {
@@ -107,7 +113,7 @@ const programs = [
     price:'Free',
     rating:'4.5',
     numReviews:'170',
-    seatsAvailable:'',
+    seatsAvailable:6,
     category:'Health',
     requirements:'',
     about:'',
