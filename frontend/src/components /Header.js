@@ -8,25 +8,27 @@ const Header = () => {
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg"
-      collapseOnSelect>
+        collapseOnSelect>
         <Container>
-        <LinkContainer to = '/'>
-          <Navbar.Brand>EventsOnline</Navbar.Brand>
-          </LinkContainer>
+        <LinkContainer to='/'>
+          <Navbar.Brand className='navbar-brand'>EventsOnline</Navbar.Brand>
+        </LinkContainer>
+          
+          
           <div>
             <SearchEvent />
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="ms-auto">
-            <LinkContainer to = '/create'>
+           
               <Nav.Link ><i className='fas fa-calendar-plus'></i> Create Event</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to = '/'>
+            
+           
               <Nav.Link ><i className='fas fa-user'></i> Sign In</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to = '/'>
+           
+           
               <Nav.Link ><i className='fas fa-pen-to-square'></i> Sign Up</Nav.Link>
-            </LinkContainer>
+           
             </Nav>
         </Container>
       </Navbar>

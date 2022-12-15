@@ -3,6 +3,7 @@ import {Container, Row, Col, Image, Card} from 'react-bootstrap';
 import { useParams } from "react-router";
 import programs from "../programs";
 
+
 const ProgramDetail = () => {
   const params = useParams();
   const progrm = programs.find(p => (
@@ -88,6 +89,8 @@ const ProgramDetail = () => {
               </div>
             </Col>
           </Row>
+
+
 
         <Row className='row6'>
           <Col>

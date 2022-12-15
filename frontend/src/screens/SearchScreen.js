@@ -1,8 +1,8 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
 import {Container, Row, Col, Image, Card} from 'react-bootstrap';
-import Map from '../components/Map';
 import progrmas from '../programs';
+
 
 const SearchScreen = () => {
   const params = useParams();
@@ -91,13 +91,7 @@ const SearchScreen = () => {
           </Row>
          
          
-             {(progrm.location !== 'Online') 
-             ? <Row className='row7'>
-             <Map address = {progrm.location} />
-             </Row>
-             : null
-            }
-         
+
 
 
         <Row className='row6'>

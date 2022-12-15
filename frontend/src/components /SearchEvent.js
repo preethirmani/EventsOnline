@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
-import {  useNavigate } from 'react-router-dom'
+import  { useNavigate } from 'react-router-dom'
+
 
 const SearchEvent = () => {
   const [searchinfo, setSearchInfo] = useState({
@@ -19,7 +20,7 @@ const SearchEvent = () => {
 
   const clickHandler = (event) => {
     event.preventDefault();
-    navigate(`/program/search/${searchinfo.search}`)
+  navigate(`/program/search/${searchinfo.search}`)
   }
 
   return (
