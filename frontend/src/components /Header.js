@@ -1,5 +1,7 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+import SearchEvent from './SearchEvent';
 
 
 const Header = () => {
@@ -8,12 +10,23 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="lg"
       collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/">EventsOnline</Navbar.Brand>
+        <LinkContainer to = '/'>
+          <Navbar.Brand>EventsOnline</Navbar.Brand>
+          </LinkContainer>
+          <div>
+            <SearchEvent />
+          </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="ms-auto">
-              <Nav.Link href="/create"><i className='fas fa-calendar-plus'></i> Create Event</Nav.Link>
-              <Nav.Link href="/login"><i className='fas fa-user'></i> Sign In</Nav.Link>
-              <Nav.Link href="/sign up"><i className='fas fa-pen-to-square'></i> Sign Up</Nav.Link>
+            <LinkContainer to = '/create'>
+              <Nav.Link ><i className='fas fa-calendar-plus'></i> Create Event</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to = '/'>
+              <Nav.Link ><i className='fas fa-user'></i> Sign In</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to = '/'>
+              <Nav.Link ><i className='fas fa-pen-to-square'></i> Sign Up</Nav.Link>
+            </LinkContainer>
             </Nav>
         </Container>
       </Navbar>
