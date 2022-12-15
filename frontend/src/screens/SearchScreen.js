@@ -1,26 +1,31 @@
-import React from "react";
+import React from 'react';
+import {useParams} from 'react-router-dom';
 import {Container, Row, Col, Image, Card} from 'react-bootstrap';
-import { useParams } from "react-router";
-import programs from "../programs";
+import progrmas from '../programs';
 
 
-const ProgramDetail = () => {
+const SearchScreen = () => {
   const params = useParams();
-  const progrm = programs.find(p => (
-    String(p._id) === params.id));
-    console.log('program.name'+progrm.name);
+   console.log(params.name);
+  const progrm = progrmas.find(p => 
+    String(p.name) === params.name
+  );
+
+ 
   return (
-    <>  
-      <Container className='image-container'>
+    <>
+   
+     
+        <Container className='image-container'>
           <Row>
             <div className='image-background col-9' style={{}}>
              <Image src={progrm.image} alt='Event' fluid />
             </div>
             <div className='col-3 row1Col2'>
-              <Card className='mb-3'>
+              <Card className='border-dark mb-3'>
                   <Card.Body>
                     <Card.Text><strong>{progrm.price}</strong></Card.Text>
-                    <button type="button"  className="btn btn-danger btn-ticket"
+                    <button type="button"  className="btn btn-primary"
                     disabled = {progrm.seatsAvailable === 0}>Tickets</button>
                   </Card.Body>
                
@@ -29,15 +34,10 @@ const ProgramDetail = () => {
             </div>
           </Row>
           
-
-         
-        
-        
           <Row className='row1'>
             <Col className='col1 col-9'>
               <h3 className='h3-title'><strong>{progrm.name}</strong></h3>
             </Col>
-           
           </Row>
 
 
@@ -89,19 +89,20 @@ const ProgramDetail = () => {
               </div>
             </Col>
           </Row>
+         
+         
 
 
 
         <Row className='row6'>
           <Col>
             <h4 className='h4-sub'><strong>About this event</strong></h4>
-            <p>{progrm.about}</p>
+            <p >{progrm.about}</p>
           </Col>
         </Row>
     </Container>
-
     </>
   )
 }
 
-export default ProgramDetail;
+export default SearchScreen

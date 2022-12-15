@@ -1,19 +1,34 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
+import SearchEvent from './SearchEvent';
 
 
 const Header = () => {
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg"
-      collapseOnSelect>
+        collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/">EventsOnline</Navbar.Brand>
+        <LinkContainer to='/'>
+          <Navbar.Brand className='navbar-brand'>EventsOnline</Navbar.Brand>
+        </LinkContainer>
+          
+          
+          <div>
+            <SearchEvent />
+          </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="ms-auto">
-              <Nav.Link href="/create"><i className='fas fa-calendar-plus'></i> Create Event</Nav.Link>
-              <Nav.Link href="/login"><i className='fas fa-user'></i> Sign In</Nav.Link>
-              <Nav.Link href="/sign up"><i className='fas fa-pen-to-square'></i> Sign Up</Nav.Link>
+           
+              <Nav.Link ><i className='fas fa-calendar-plus'></i> Create Event</Nav.Link>
+            
+           
+              <Nav.Link ><i className='fas fa-user'></i> Sign In</Nav.Link>
+           
+           
+              <Nav.Link ><i className='fas fa-pen-to-square'></i> Sign Up</Nav.Link>
+           
             </Nav>
         </Container>
       </Navbar>
