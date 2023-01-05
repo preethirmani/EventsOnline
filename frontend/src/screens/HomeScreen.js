@@ -1,10 +1,19 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { Row, Col } from 'react-bootstrap'
-import programs from '../programs'
+import axios from 'axios'
 import Program from '../components /Program'
 
 
 const HomeScreen = () => {
+  const [programs, setPrograms] = useState([]);
+
+  useEffect(() => {
+    ( async () => {
+      const {data} = await axios.get(`/api/programs`);
+      setPrograms(data);
+    })();
+  },[])
+  
   return (
     <div>
       <>

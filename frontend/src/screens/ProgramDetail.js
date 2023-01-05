@@ -1,14 +1,21 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import {Container, Row, Col, Image, Card} from 'react-bootstrap';
+import axios from 'axios';
 import { useParams } from "react-router";
-import programs from "../programs";
+
 
 
 const ProgramDetail = () => {
   const params = useParams();
-  const progrm = programs.find(p => (
-    String(p._id) === params.id));
-    console.log('program.name'+progrm.name);
+  const [progrm, setProgrm] = useState({});
+ 
+  useEffect(() => {
+    (async () => {
+      const {data} = await axios.get(`/api/program/${params.id}`);
+      setProgrm(data);
+    })();
+  },[params])
+
   return (
     <>  
       <Container className='image-container'>

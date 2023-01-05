@@ -1,15 +1,20 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {Container, Row, Col, Image, Card} from 'react-bootstrap';
-import progrmas from '../programs';
+import axios from 'axios';
+
 
 
 const SearchScreen = () => {
   const params = useParams();
-   console.log(params.name);
-  const progrm = progrmas.find(p => 
-    String(p.name) === params.name
-  );
+  const [progrm, setProgrm] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      const {data} = await axios.get(`/api/program/search/${params.name}`);
+      setProgrm(data);
+     })();
+  },[params])
 
  
   return (
