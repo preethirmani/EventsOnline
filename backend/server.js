@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import programs from './data/programs.js';
+import connectDB from './config/db.js';
 
 const app = express();
 dotenv.config();
+connectDB();
 
 //routes
 app.get('/api/programs', (req, res) => 
