@@ -1,0 +1,24 @@
+{
+  "name": "eventsonline",
+  "version": "1.0.0",
+  "description": "Online platforms for events",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preethirmani/EventsOnline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/preethirmani/EventsOnline/issues"
+  },
+  "homepage": "https://github.com/preethirmani/EventsOnline#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}
