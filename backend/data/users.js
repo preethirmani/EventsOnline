@@ -2,7 +2,7 @@ import bcryptjs from 'bcryptjs';
 import mongoose, { Mongoose } from 'mongoose';
 
 
-const usersSchema = [
+const users = [
   {
     name : 'Admin User',
     email : 'adminUser@test.com',
@@ -28,5 +28,5 @@ const usersSchema = [
     isAdmin: false
   }
 ];
-const User = mongoose.model('users',usersSchema)
-export default User;
+
+export default users;

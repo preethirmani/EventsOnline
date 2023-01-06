@@ -56,10 +56,10 @@ const programSchema = mongoose.Schema({
    category: {
     type: String
   },
-   duration: {
+   about: {
     type: String
   },
-   about: {
+  duration: {
     type: String
   }
 }, {
