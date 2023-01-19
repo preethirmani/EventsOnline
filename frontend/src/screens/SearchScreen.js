@@ -11,7 +11,7 @@ const SearchScreen = () => {
 
   useEffect(() => {
     (async () => {
-      const {data} = await axios.get(`/api/program/search/${params.name}`);
+      const {data} = await axios.get(`/api/programs/search/${params.name}`);
       setProgrm(data);
      })();
   },[params])

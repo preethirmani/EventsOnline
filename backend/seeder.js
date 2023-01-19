@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
-import programs from './data/programs';
-import users from './data/users';
-import Program from './models/programModel';
-import User from './models/userModel'
+import connectDB from './config/db.js';
+import programs from './data/programs.js';
+import users from './data/users.js';
+import Program from './models/programModel.js';
+import User from './models/userModel.js'
 
-
+connectDB();
 const importData = async () => {
   try {
-    await Program.deleteMany();
+    await Program.deleteMany()
     await User.deleteMany();
 
     const createdUser = await User.insertMany(users);

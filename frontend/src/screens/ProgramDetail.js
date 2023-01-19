@@ -11,7 +11,7 @@ const ProgramDetail = () => {
  
   useEffect(() => {
     (async () => {
-      const {data} = await axios.get(`/api/program/${params.id}`);
+      const {data} = await axios.get(`/api/programs/${params.id}`);
       setProgrm(data);
     })();
   },[params])

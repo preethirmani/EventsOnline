@@ -29,7 +29,7 @@ const programSchema = mongoose.Schema({
   },
    time: {
     type: String,
-    required: true
+   
   },
    location: {
     type: String,
