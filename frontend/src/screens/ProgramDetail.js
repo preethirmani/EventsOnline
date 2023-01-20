@@ -21,8 +21,8 @@ const ProgramDetail = () => {
   },[dispatch, params])
 
    const addToCartHandler = () => {
-      console.log('addtocartcalled')
-      //navigate(`/cart/${params.id}/?qty=${qty}`);
+      console.log('addtocartcalled');
+      console.log('qty in addTocartHanler::'+qty)
       navigate(`/program/cart/${params.id}/?qty=${qty}`);
     }
 
