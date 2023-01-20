@@ -1,24 +1,40 @@
-import React,{useState, useEffect} from "react";
-import {Container, Row, Col, Image, Card} from 'react-bootstrap';
-import axios from 'axios';
-import { useParams } from "react-router";
+import React,{useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {Container, Row, Col, Image, Card, Form} from 'react-bootstrap';
+import { useNavigate, useParams } from "react-router";
+import { listProgramDetail } from "../actions/programActions";
+import Loader from '../components /Loader';
+import Message from '../components /Message';
 
 
 
 const ProgramDetail = () => {
   const params = useParams();
-  const [progrm, setProgrm] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [qty, setQty] = useState(1);
+  const programDetails = useSelector((state) => state.programDetail);
+  const {progrm, loading, error} = programDetails;
  
   useEffect(() => {
-    (async () => {
-      const {data} = await axios.get(`/api/programs/${params.id}`);
-      setProgrm(data);
-    })();
-  },[params])
+   dispatch(listProgramDetail(params.id))
+  },[dispatch, params])
+
+   const addToCartHandler = () => {
+      console.log('addtocartcalled')
+      //navigate(`/cart/${params.id}/?qty=${qty}`);
+      navigate(`/program/cart/${params.id}/?qty=${qty}`);
+    }
 
   return (
     <>  
-      <Container className='image-container'>
+
+    {
+      loading 
+      ? (<Loader />) 
+      : (error)
+      ? (<Message variant='danger'>{error}</Message>)
+      :( <Container className='image-container'>
           <Row>
             <div className='image-background col-9' style={{}}>
              <Image src={progrm.image} alt='Event' fluid />
@@ -27,7 +43,20 @@ const ProgramDetail = () => {
               <Card className='mb-3'>
                   <Card.Body>
                     <Card.Text><strong>{progrm.price}</strong></Card.Text>
-                    <button type="button"  className="btn btn-danger btn-ticket"
+                    {progrm.seatsAvailable > 0  && (
+                        <Form.Select className="form-select" 
+                         value={qty} onChange={(e) => setQty(e.target.value)}>
+                              {
+                                [...Array(progrm.seatsAvailable).keys()].map((x) => (
+                                  <option key={x+1} value={x+1}>
+                                    {x+1}
+                                  </option>
+                                ))
+                              }
+                        </Form.Select>
+                    )}
+                    <button type="button" onClick = {addToCartHandler}
+                     className="btn btn-danger btn-ticket"
                     disabled = {progrm.seatsAvailable === 0}>Tickets</button>
                   </Card.Body>
                
@@ -105,7 +134,9 @@ const ProgramDetail = () => {
             <p>{progrm.about}</p>
           </Col>
         </Row>
-    </Container>
+    </Container>)
+    }
+     
 
     </>
   )

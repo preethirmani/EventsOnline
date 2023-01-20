@@ -1,27 +1,33 @@
 import React,{useState, useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import {useParams} from 'react-router-dom';
+import {searchProgramDetail} from '../actions/programActions'
 import {Container, Row, Col, Image, Card} from 'react-bootstrap';
-import axios from 'axios';
+import Loader from '../components /Loader';
+import Message from '../components /Message';
 
 
 
 const SearchScreen = () => {
   const params = useParams();
-  const [progrm, setProgrm] = useState({});
+  const dispatch = useDispatch();
+  const searchProgrmDetail = useSelector((state) => state.programSearchDetailReducer)
+  const {progrm, loading, error} = searchProgrmDetail;
 
   useEffect(() => {
-    (async () => {
-      const {data} = await axios.get(`/api/programs/search/${params.name}`);
-      setProgrm(data);
-     })();
-  },[params])
+   dispatch(searchProgramDetail(params.name));
+  },[dispatch, params])
 
  
   return (
     <>
-   
-     
-        <Container className='image-container'>
+        {
+          loading ?
+          (<Loader />)
+          : error ? 
+          (<Message variant='danger'>{error}</Message>)
+          : (
+          <Container className='image-container'>
           <Row>
             <div className='image-background col-9' style={{}}>
              <Image src={progrm.image} alt='Event' fluid />
@@ -94,10 +100,6 @@ const SearchScreen = () => {
               </div>
             </Col>
           </Row>
-         
-         
-
-
 
         <Row className='row6'>
           <Col>
@@ -105,7 +107,11 @@ const SearchScreen = () => {
             <p >{progrm.about}</p>
           </Col>
         </Row>
-    </Container>
+        </Container>
+          )
+        }
+     
+       
     </>
   )
 }

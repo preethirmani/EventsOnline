@@ -81,7 +81,10 @@ main {
 
 .search-form {
   display: flex;
+}
 
+.form-select {
+  margin-bottom: 20px;
 }
 
 

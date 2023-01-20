@@ -1,24 +1,37 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {listPrograms} from '../actions/programActions'
 import { Row, Col } from 'react-bootstrap'
 import axios from 'axios'
-import Program from '../components /Program'
+import Program from '../components /Program';
+import Loader from '../components /Loader';
+import Message from '../components /Message';
 
 
 const HomeScreen = () => {
-  const [programs, setPrograms] = useState([]);
+ 
+  const dispatch = useDispatch();
+  const programList = useSelector((state) => state.programList);
+  const {loading, programs, error} = programList;
 
   useEffect(() => {
-    ( async () => {
-      const {data} = await axios.get(`/api/programs`);
-      setPrograms(data);
-    })();
-  },[])
+
+    dispatch (listPrograms());
+ 
+  },[dispatch])
   
   return (
     <div>
       <>
       <h1> Events </h1>
-      <Row>
+    {
+      loading ? (
+        <Loader />
+      )
+      : error ?(
+        <Message variant='danger'>{error}</Message>
+      )
+      : ( <Row>
       {
           programs.map(program => (
             <Col key={program._id} sm={12} md={6} lg={4} xl={3}>
@@ -27,7 +40,9 @@ const HomeScreen = () => {
           ))
         }
         
-      </Row>
+      </Row>)
+    }
+     
       </>
     </div>
   )
