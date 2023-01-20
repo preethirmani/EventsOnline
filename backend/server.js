@@ -1,13 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import programs from './data/programs.js';
 import connectDB from './config/db.js';
 import programRoutes from './routes/programRoutes.js';
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 dotenv.config();
-await connectDB();
+connectDB();
 
 //routes
 app.use(express.json());

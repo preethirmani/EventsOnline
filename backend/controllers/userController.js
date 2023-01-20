@@ -1,12 +1,12 @@
 import asyncHandler from 'express-async-handler';
-import User from '../models/userModel';
-import generateWebToken from '../utils/generateToken';
+import User from '../models/userModel.js';
+import generateWebToken from '../utils/generateToken.js';
 
 
 const authenticateUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({'email': req.body.email});
 
-  if(user && (user.matchPassword(password))) {
+  if(user && (await user.matchPassword(req.body.password))) {
     res.json ({
       _id : user._id,
       name: user.name,

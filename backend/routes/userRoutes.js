@@ -1,5 +1,6 @@
 import express from 'express';
-import {authenticateUser, getUserProfile} from '../controllers/userController';
+import {authenticateUser, getUserProfile} from '../controllers/userController.js';
+import {protect} from '../middleware/authMiddleware.js'
 
 
 
