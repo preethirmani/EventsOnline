@@ -15,7 +15,7 @@ const PlaceOrderScreen = () => {
 
   //   Calculate prices
   const addDecimals = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2)
+  return (Math.round(num * 100) / 100).toFixed(2)
   }
 
   cart.itemsPrice = addDecimals(
@@ -32,6 +32,7 @@ const PlaceOrderScreen = () => {
   const { order, success, error } = orderCreate
 
   useEffect(() => {
+    console.log('success pn PlaceOrder' + success);
     if (success) {
       navigate(`/order/${order._id}`)
     }

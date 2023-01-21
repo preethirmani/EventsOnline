@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { json } from 'react-router';
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -12,6 +13,8 @@ import {
 } from '../constants/orderConstants';
 
 export const createOrder = (order) => async(dispatch,getState) => {
+  console.log('create order called');
+  console.log('order::'+ JSON.stringify(order));
 
   try{
     dispatch({

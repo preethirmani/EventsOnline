@@ -19,6 +19,7 @@ const OrderScreen = () => {
 
 
   const [sdkReady, setSdkReady] = useState(false)
+  
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
 
