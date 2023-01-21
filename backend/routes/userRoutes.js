@@ -16,7 +16,6 @@ router.post('/login', authenticateUser)
 // @route POST /api/user/profile
 // @access private
 
-
 router.route('/profile').get(protect, getUserProfile)
 
 export default router

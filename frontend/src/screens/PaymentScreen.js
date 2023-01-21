@@ -22,14 +22,15 @@ if(!billingInfo) {
 
 const submitHandler= (e) => {
   e.preventDefault();
+  console.log('PaymentMethod in PaymentScreen: '+paymentMethod);
   dispatch(savePaymentMethod(paymentMethod))
-  navigate('/placeholder');
+  navigate('/placeorder');
 }
 
   return (
    <FormContainer> 
     <CheckOutSteps step1 step2 step3 />
-    <h1 Payment Method></h1>
+    <h1>Payment Method</h1>
     <Form onSubmit={submitHandler}> 
       <Form.Group>
         <Form.Label as = 'legend'>Select Method</Form.Label>

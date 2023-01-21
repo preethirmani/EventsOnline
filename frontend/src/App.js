@@ -10,6 +10,8 @@ import LoginScreen from "./screens/LoginScreen";
 import ProgramDetail from "./screens/ProgramDetail";
 import SearchScreen from "./screens/SearchScreen";
 import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
 
 
 
@@ -31,6 +33,8 @@ function App() {
             <Route path='/program/cart/:id' element = {<CartScreen/>} />
             <Route path='/billing/' element={<BillingScreen/>} />
             <Route path='/payment/' element={<PaymentScreen />} />
+            <Route path='/placeorder' element={<PlaceOrderScreen />} />
+            <Route path='/order/:id' element={<OrderScreen />} /> 
 
           </Routes>
         </Container>
