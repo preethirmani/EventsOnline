@@ -1,4 +1,5 @@
-import {CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_BILLING} from '../constants/cartConstants';
+import {CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_BILLING,
+CART_SAVE_PAYMENT} from '../constants/cartConstants';
 
 export const cartReducer = (state= {cartItems : []}, action) => {
   switch(action.type) {
