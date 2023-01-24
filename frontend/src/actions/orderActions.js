@@ -51,6 +51,8 @@ const {
 }
 
 export const getOrderDetails = (id) => async (dispatch, getState) => {
+  console.log('order action:: getOrderDetails');
+
   try {
     dispatch({
       type: ORDER_DETAILS_REQUEST,

@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { Link, useParams,  } from 'react-router-dom'
-import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components /Message'
+import Loader from '../components /Loader'
 import { getOrderDetails, payOrder } from '../actions/orderActions'
 import { ORDER_PAY_RESET } from '../constants/orderConstants'
-import Message
- from '../components /Message';
- import Loader from '../components /Loader';
 
 const OrderScreen = () => {
-  const dispatch = useDispatch();
-
   const params = useParams();
   const orderId = params.id
-  
 
+  const dispatch = useDispatch()
 
   const [sdkReady, setSdkReady] = useState(false)
-  
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
 
@@ -27,7 +23,7 @@ const OrderScreen = () => {
   const { loading: loadingPay, success: successPay } = orderPay
 
   if (!loading) {
-    
+    //   Calculate prices
     const addDecimals = (num) => {
       return (Math.round(num * 100) / 100).toFixed(2)
     }
@@ -87,12 +83,7 @@ const OrderScreen = () => {
                 <strong>Email: </strong>{' '}
                 <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
               </p>
-              <p>
-                <strong>Address:</strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
-                {order.shippingAddress.postalCode},{' '}
-                {order.shippingAddress.country}
-              </p>
+             
               {order.isDelivered ? (
                 <Message variant='success'>
                   Delivered on {order.deliveredAt}
@@ -160,7 +151,12 @@ const OrderScreen = () => {
                   <Col>${order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              
+              <ListGroup.Item>
+                <Row>
+                  <Col>Shipping</Col>
+                  <Col>${order.shippingPrice}</Col>
+                </Row>
+              </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>

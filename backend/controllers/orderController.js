@@ -30,6 +30,7 @@ const addOrderItems = asyncHandler(async(req, res) => {
 })
 
 const getOrderById = asyncHandler(async (req, res) => {
+  console.log('getorderby id called');
   const order = await Order.findById(req.params.id).populate(
     'user',
     'name email'

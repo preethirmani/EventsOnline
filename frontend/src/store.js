@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   userLogin: loginReducer,
   orderCreate: orderCreateReducer,
-  orderDetail: orderDetailsReducer,
+  orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer
 })
 
