@@ -2,7 +2,6 @@ import React,{useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {listPrograms} from '../actions/programActions'
 import { Row, Col } from 'react-bootstrap'
-import axios from 'axios'
 import Program from '../components /Program';
 import Loader from '../components /Loader';
 import Message from '../components /Message';
